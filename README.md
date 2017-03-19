@@ -1,4 +1,8 @@
-# gopool [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/damoye/gopool)
+# gopool
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/damoye/gopool)
+[![Build Status](https://travis-ci.org/damoye/gopool.svg?branch=master)](https://travis-ci.org/damoye/gopool)
+[![Coverage Status](https://coveralls.io/repos/github/damoye/gopool/badge.svg?branch=master)](https://coveralls.io/github/damoye/gopool?branch=master)
+
 Pool is a thread safe pool for net.Conn. It can be used to manage and reuse connections.
 
 ## Install and Usage
