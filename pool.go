@@ -11,18 +11,12 @@ type Pool struct {
 	dialer func() (net.Conn, error)
 }
 
-// NewPool returns a new net.Conn pool
-func NewPool(poolSize int, dialer func() (net.Conn, error)) (*Pool, error) {
+// New returns a new net.Conn pool
+func New(poolSize int, dialer func() (net.Conn, error)) (*Pool, error) {
 	if poolSize <= 0 {
 		return nil, errors.New("invalid poolSize")
 	}
-	pool := Pool{make(chan net.Conn, poolSize), dialer}
-	conn, err := dialer()
-	if err != nil {
-		return nil, err
-	}
-	pool.conns <- conn
-	return &pool, nil
+	return &Pool{make(chan net.Conn, poolSize), dialer}, nil
 }
 
 // Get removes a net.Conn from the Pool, and returns it to the caller.

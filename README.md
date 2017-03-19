@@ -18,22 +18,22 @@ and use `pool` as the package name inside the code.
 
 ## Example
 ```go
-	dialer := func() (net.Conn, error) { return net.Dial("tcp", "127.0.0.1:4000") }
-	p, err := pool.NewPool(30, dialer)
-	if err != nil {
-		log.Fatal(err)
-	}
-	conn, err := p.Get()
-	if err != nil {
-		log.Fatal(err)
-	}
-	// Do something with comm
-	_, err = conn.Write("hello world")
-	if err != nil {
-		conn.Close()
-	} else {
-		p.Put(conn)
-	}
+dialer := func() (net.Conn, error) { return net.Dial("tcp", "127.0.0.1:4000") }
+p, err := pool.New(30, dialer)
+if err != nil {
+	log.Fatal(err)
+}
+conn, err := p.Get()
+if err != nil {
+	log.Fatal(err)
+}
+// Do something with conn
+_, err = conn.Write("hello world")
+if err != nil {
+	conn.Close()
+} else {
+	p.Put(conn)
+}
 ```
 ## License
 
